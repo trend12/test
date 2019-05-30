@@ -1,7 +1,0 @@
-div.input>(span.input_label+input.input_field+sapn.input_clear{x})
-
-<div class="input">
-	<span class="input_label"></span>
-	<input type="text" class="input_field" />
-	<span class="input_clear">x</span>
-</div>
