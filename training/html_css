@@ -253,7 +253,7 @@ background-position    -положение
 
 
 display:
-	inline       -игнорирует width, height, margin
+	inline       -игнорирует width, height, margin-top, margin-bottom
 	block
 	none         -не виден элемент
 	inline-block -есть width, height, margin
