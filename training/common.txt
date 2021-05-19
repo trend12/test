@@ -1,0 +1,798 @@
+
+// создадим наше собственное событие с данными пункта меню, по которому щёлкнули мышью
+let customEvent = new CustomEvent("menu-open", {
+  bubbles: true
+});
+
+// сгенерировать наше событие асинхронно
+setTimeout(() => menu.dispatchEvent(customEvent));
+
+
+
+eventLoop цикл
+	макрозадача (одна из очереди)
+		setTimeOut
+	
+	микрозадачи (все в очереди)
+		промисы
+		.then/catch/finally
+		await
+		//помещает в очередь микрозадач
+		queueMicrotask(func)
+	
+	отрисовка
+
+
+WebWorkers для более длинный задачь в паралейном потоке
+//-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+Ctrl+Shif+t
+
+//-----------------------------------------------------------------------------
+//спред оператор
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let arr4 = [...arr1, ...arr2];
+
+
+-------------------------------------------------------------------------------
+let newArr = new Array(10).fill(10);
+
+
+-------------------------------------------------------------------------------
+var contextSite = SPControl.GetContextSite(HttpContext.Current);
+
+using (SPSite siteCollection = new SPSite(HttpContext.Current.Request.UrlReferrer.ToString()))
+
+
+
+new SPSaveWebpackPlugin({
+      'coreOptions': {
+        'checkin': true,
+        'checkinType': 1,
+        'siteUrl': 'http://server/'
+      },
+      'fileOptions': {
+        'folder': 'Style Library/dist'
+      }
+})
+//при сборке он у тебя их спросит и закеширует
+
+
+-------------------------------------------------------------------------------
+UnitTest
+
+
+-------------------------------------------------------------------------------
+//Класическая трёх уровневая архитектура
+
+- Presentation Layer (уровень представления)
+- Business Layer     (уровень бизнес-логики)
+- Data Access Layer  (уровень доступа к данным)
+
+
+IoC, DI, IoC-контейнер
+
+Dependency Injection
+    -Constructor Injection
+    -Setter Injection
+    -Method Injection
+Factory Method
+Service Locator
+
+
+-------------------------------------------------------------------------------
+Обобщенные делегаты
+
+delegate T Operation<T, K>(K val);
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+Анонимные методы
+
+delegate void MessageHandler(string message);
+
+//..
+
+//Анонимные методы
+
+MessageHandler handler = delegate(string mes)
+{
+    Console.WriteLine(mes);
+};
+
+
+-------------------------------------------------------------------------------
+//Стрелочные функции js
+
+Лямбды C#
+
+class Program
+{
+    delegate int Operation(int x, int y);
+
+    static void Main(string[] args)
+    {
+        Operation operation = (x, y) => x + y;
+        Console.WriteLine(operation(10, 20));       //30
+        Console.WriteLine(operation(40, 20));       //60
+        Console.Read();
+    }
+}
+
+-------------------------------------------------------------------------------
+//События
+
+delegate void AccountHandler(string message);
+
+event AccountHandler Notify;
+
+//..
+
+if(Notify != null)
+
+Notify("Произошло действие");
+
+//или
+
+Notify?.Invoke("Произошло действие");
+
+
+
+.Invoke       //вызвать метод
+.BeginInvoke  //вызов в отдельном потоке
+.EndInvoke
+
+
+Action
+Predicate
+Func
+
+
+
+try
+{
+    int result = x / y;
+}
+catch(Exception ex) when (y==0)                                /!!!!!!!!!!!!!!!!!!!!!!!!!!!!! when
+{
+    Console.WriteLine("y не должен быть равен 0");
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+
+Book b2 = new Book { name = "Отцы и дети", author = "И. С. Тургенев", year = 1862 };
+b2.GetInformation();
+
+partial class Book {
+    //...
+}
+
+
+
+public readonly double K = 23;  //можно так инициализировать
+
+
+-------------------------------------------------------------------------------
+//нельзя наследовать
+
+sealed class Admin {}
+
+
+-------------------------------------------------------------------------------
+//!!!скрытие члена наследника
+
+public new void Display() {
+    //...
+}
+
+
+public override sealed void Display() {
+    base.Display();
+    //..
+}
+
+
+-------------------------------------------------------------------------------
+//Анонимные типы
+
+//свойства анонимных типов доступны только для чтения.
+
+//в основном используются для выборки из БД
+
+
+
+var user = new { Name = "Tom", Age = 34 };
+
+Console.WriteLine(user.Name);
+
+
+
+
+
+-------------------------------------------------------------------------------
+int? z = null;
+
+bool? enabled = null;
+int a = z.Value;
+
+
+
+Оператор ??
+
+int? x = null;
+
+int y = x ?? 100;  // равно 100, так как x равен null
+
+int? z = 200;
+
+int t = z ?? 44; // равно 200, так как z не равен null
+
+
+
+//ЭЛВИС-ОПЕРАТОР
+
+string companyName = user?.Phone?.Company?.Name;
+
+
+
+
+Регулярные выражения
+
+Синхронность
+
+
+
+static async void FactorialAsync() 
+{
+
+    await Task.Run(() =>
+    {
+        int result = 1;
+        for (int i = 1; i <= 6; i++)
+        {
+            result *= i;
+        }
+
+        Thread.Sleep(8000);
+
+        Console.WriteLine($"Факториал равен {result}");
+    });
+
+}
+
+//////////////////////////////////////////////////////////////////// 
+
+//передача параметров и взвращение параметров 
+
+static async void FactorialAsync(int n)
+{
+    int x = await Task.Run(()=>Factorial(n));
+}
+
+
+
+
+------------------------------------------------------------------------
+Programmatically Get Version Changes for List Item in SharePoint 2013  
+Authentication in web services with HttpWebRequest 
+Send JQuery JSON to WCF REST using date  
+how to attach file to list sharepoint 2013 via REST API 
+Programmatically give a user permissions temporarily 
+How to programmatically get questions from a Survey 
+How do you do Impersonation in .NET? 
+
+Handler - обработчик 
+
+HasRows 
+
+elem.hasAttribute(name) – проверяет наличие атрибута 
+elem.getAttribute(name) – получает значение атрибута 
+elem.setAttribute(name, value) – устанавливает атрибут 
+elem.removeAttribute(name) – удаляет атрибут 
+
+ 
+-----------------------------------------------------------------------
+
+(function () { 
+    'use strict'; 
+
+    var element = document.createElement('script');
+    element.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js";
+    element.type = "text/javascript";
+    document.head.appendChild(element);
+})();
+
+-----------------------------------------------------------------------
+Шаблонизатор
+Транспайлер 
+
+UI/UX - User Interface / User Experience
+-----------------------------------------------------------------------
+
+if (row[j] instanceof Date) {
+	innerValue = row[j].toLocaleString();     //выведет "21.11.2019, 10:45:53"
+};
+
+
+var result = innerValue.replace(/"/g, '""'); 
+
+ 
+if (result.search(/("|,|\n)/g) >= 0)
+	result = '"' + result + '"';
+
+
+-----------------------------------------------------------------------
+
+document.designMode = "on" 
+
+-----------------------------------------------------------------------
+
+
+//Картинка на весь экран 
+
+height : 100vh;
+
+
+имеа классов class
+    header 
+    header_inner 
+    header_logo
+    container
+    intro
+    имя
+    имя_item 
+
+
+    text-decoration: none; 
+    transition: color .2s linear;
+
+    top: calc(50% - 65px);
+    left: calc(50% - 65px);
+
+    let str = "+7(903)-123-45-67";
+    let regexp = /\d/g; 
+    
+    alert( str.match(regexp) ); // массив совпадений: 7,9,0,3,1,2,3,4,5,6,7 // и можно сделать из них уже чисто цифровой номер телефона
+    alert( str.match(regexp).join('') ); // 79035419441
+ 
+
+
+-------------------------------------------------------------- 
+
+Object.assign({}, {
+    field1:"value1",
+    field2:"value2" 
+});
+
+
+
+//получаем все значение person и новое свойсво adress и добавляем их в новый object "newPerson" 
+
+const newPerson = {
+    ...person,             //spread оператор
+    address: 'USA'
+}
+
+
+//показывает массив ключей
+Object.keys(person);
+
+
+//получаем массив значений
+Object.values(person);
+
+ 
+//получаем массив с массивом пар ключ значения
+Object.entries(person); 
+
+ 
+//нельзя добавлять изменять и удалять поля
+Object.freeze(person); 
+
+ 
+//можно только изменять поля 
+Object.seal(person); 
+
+ 
+
+//сравнивает два объекта 
+Object.is(person, newPerson); 
+
+ 
+
+//перебор через of
+for (const key of keys) {
+    console.log(key); 
+} 
+
+
+for (const [key, val] of entries) {
+    console.log(`${key} : ${val}`);
+} 
+
+
+//////////////////////////////////////////////////// 
+isComplited && doSomething();
+
+var data = object && object.data;
+
+var data = value || {};
+
+//////////////////////////////////////////////////// 
+
+call, apply, bind 
+
+//////////////////////////////////////////////////// 
+
+потеря контекста 
+
+2 подхода:
+    1 - this и bind
+    2 - self и () => {} // в стрелочной функции this равно this функции там где она находится 
+
+//////////////////////////////////////////////////// 
+Примеси 
+Адаптер 
+
+////////////////////////////////////////////////////
+функция получения значения параметра из rest
+
+function getParamByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+};
+
+
+---------------------------------------------------------------------------------------- 
+БЭМ 
+<button class="Button Button_state_active Form-Button">Button</button> 
+/////////////////////////////////////////////////////////////// 
+
+html 
+анимации 
+js 
+регулярные выражения 
+c# 
+
+asyn и awayt https://metanit.com/sharp/tutorial/13.5.php 
+
+/////////////////////////////////////////////////////////////// 
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-width: 280px;
+}
+
+//при изменение размеров экрана не меняется масштаб (шрифт размеры элементов) 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+@media (max-width:1200px) {
+}
+
+
+/////////////////////////////////////// 
+
+контенер который ограничивает ширину наше контентной части 
+
+/////////////////////////////////////////////////////////////////// 
+
+nodejs 
+REPL node js 
+
+выход из скрипта 
+process.exit(0); 
+
+const str = new Array(i).fill('рулит').join('  ') 
+
+переменные окружения (пароли)
+    есть универсальный модуль для всего nmp модуль cross-env
+    cross-env MAPIKEY=1234 node main js
+    или
+    Windows (set MYPIKEY=1234 && node main.js)
+    LINUX (set MAPIKEY node main.js)
+    console.log(process.env.MAPIKEY); 
+
+
+//core модули 
+    path.resolve 
+    path.join 
+    fs.watchFile() 
+    fs.readFile 
+    zlib 
+
+
+util.isDeepStrinctEqual 
+util.promisify 
+child_process 
+os.userInfo() 
+
+ 
+//модули (выполняется один раз и всё остальное берётся их кеша) 
+__dirname 
+__filename 
+
+------------------------------------------------------------------------
+ 
+
+//как ищутся модули 
+1 сначала core модули
+2 если начинается с "/" nodejs ищет с корня системы
+3 если начинается с "./" или "/" или "../"
+    загружаем как файл
+        если путь это файл то просто загружаем файл
+        если к пути node добавит ".js"  то загружается как файл
+        если к пути node добавит ".json" то загружется как файл (то вернёт обычный объект)
+        если к пути node добавит ".node" то загрузится как бинарынй файл (binary addon)
+    загружаем как директорию
+        если в директории лежит package.json то ищем в поле main (создаётся путь как указанный в requere + поле main)
+            пытаемся загрузить как файл
+            загружается как index (index это каталог)
+                ищет index.js
+                ищет index.json
+                ищет index.node
+        загружаем как index
+4 node модули каторые скаченны c npm
+    есть функций которая возвращает список путей
+        примерфункции`
+            если файл по пути /home/user/projects/foo.js вызывает require("bar.js") то node будет искать по след путям
+            /home/user/projects/node_modules/bar.js
+            /home/user/node_modules/bar.js
+            /home/node_modules/bar.js
+            /node_modules/bar.js
+        пытается загрузить как файл
+        пытается загрузить как директорию
+5 выкидывает ошибку
+
+
+
+///////////////////////////////////////////////////////////////////
+EventEmitter
+    on
+    emit
+    removeListener
+
+/////////////////////////////////////////////////////////////////// 
+стримы
+    const fs = require("fs");
+    const zlib = require("zlib");
+    const gzip = zlib.createGzip();
+    const rstream = fs.createReadStream("myfile.txt");
+    const wstream = fs.createWriteStream("myfile.txt.gz");
+    
+    rstream.pipe(gzip).pipe(wstream).on("finish", function () {
+        console.log("done compression");
+    }); 
+
+//////////////////// 
+let buffer = ""; 
+rstream.on("data", data => { 
+    buffer+=data; 
+}); 
+
+
+////////////////////////////////////////// 
+дочернии процессы
+    spawn
+    execFile
+    exec
+    fork
+
+    const { spawn } = require("child_process");
+    spawn('git', ['log']).stdout.pipe(process.stdout);
+    //'git' - путь до исполняемого файла (здесь берётся из PATH, который передаётся через process.env)
+    //возвращает объект нового типа который возвращает stdout, stdin, stderro
+
+
+///////////////////////////////////////// 
+блокирующий ввод вывод 
+
+
+
+/////////////////////////////////////////
+eventLoop nodejs
+    process.nextTick (всё очередь)
+    microtask (всё очередь) (если есть хоть один process.nextTick) то заново  выполнится nextTick
+    setTimeOut и setInterval (одну функцию) (всего 5)
+        process.nextTick (всё очередь)
+        microtask (всё очередь)
+        continue
+    IO Events (всё что связанно с операциями ввода вывода)(всего 5)
+        process.nextTick (всё очередь)
+        microtask (всё очередь)
+        continue
+    setImmediate (синхронный код)(всего 5)
+        process.nextTick (всё очередь)
+        microtask (всё очередь)
+        continue
+    когда закрываются что то (soket, все callBack которые связанные с событем close)(всего 5)
+        process.nextTick (всё очередь)
+        microtask (всё очередь)
+        continue
+
+/////////////////////////////////////////
+
+display:flex; 
+flex-direction:colum; 
+justify-content:center; 
+align-item:center; 
+
+background-image: url("./../img/header/bg.jpg");//путь относительно css файла 
+backgroun-size: cover; 
+backgroun-repeat: no-repeat; 
+bacgroun-position:center; 
+
+background-image: radial-gradient(circle 675px at center, #ffffff 0%, #ccdef0 100%); 
+
+
+//задать выравнивание по центру для absolute элементов 
+//relativer это родитель для блока absolute 
+
+bottom:0;
+left:50%;
+transform: translate(-50%, 0); //50% от числа ширины элемента
+
+.nav__item:last-child {
+    maring-right:0;
+}
+
+.chald:nth-last-child(2) {  //nth-last-child(2n+1)
+    //выбирет пред последний элемент в контенере
+}
+
+.footer::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+семантические теги 
+header 
+
+в css зависит от продяка написания тегов в css файле. Который последний те свойства и применяются
+.class1 { … }
+.class2 { ... }
+а не class="class2 class1"
+
+
+?отсуп от заголовка был перенесён на два контейнера выше 
+    возможно зависит от p и h1 
+    рашается добавлением перед p или h1 чего нибудь 
+
+
+box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+
+line-height: 130%; //от font-size блока 
+line-height:1.3; //это множитель который берёт значение от font-size текущего блока 
+
+.foter-row > *{} //выбрать все теги идущие на 1 уровне вложенности 
+.foter-row > * + *{} //выбрать все теги идущие на 1 уровне вложенности (селектор + выбирает те элементы у которого есть сосед слева) 
+
+
+//////////////////////////////////////////////// 
+
+сетка 12 элеметов 
+flex-grow: 1; //на сколько элемент может возрасти 
+секция 
+transform:transitionY(-15px); 
+transition: transform 0.2s ease-in; //плавный переход
+
+семантика 
+    header 
+    main - основное содержимое страницы 
+    article - для того чтоб использовать статью (часть контента которое если его переместить куда-то  то он не потеряет свою актуальност) 
+    section - один из разделов основного контента 
+    footer
+
+width:calc(50% - 15px);//обязательно с пробелами 
+
+img { 
+    max-width:100%;
+}
+
+media 
+    max-width:1140px 
+    max-width:760px 
+    //320 для iphone 
+
+шрифт обычного текста Montserrat 16px
+
+coverr.co 
+vide.js //для постановки фонов 
+
+<a src="#test" >test</a> 
+<div id="test">...</div> 
+
+html {
+    scroll-behavior:smooth; 
+} 
+
+шаблонизаторы 
+
+let emmiter = new EventTarget();
+
+$_ - результат последнего вычисления в консоле
+$0 - выделенный элемент doom
+copy(jsObject);
+console.table(object);
+
+инутрумент линтер (linter)
+
+
+SOLID -  
+GRASP -  
+KISS - не надо наворачивать лишнию логику когда она не нужна 
+YAGNI - не нужно писать код в прок (много не использованного кода) 
+DRY - минимизация использование ctrl+c и ctrl+v 
+
+
+MVC
+MVP
+MVVM/MV*
+Flux
+Redux
+
+/////////////////////////////////////////// 
+
+wc
+less 
+
+wc<file.txt 
+
+//выведет количество найденных строчек 
+ps gaxuww | greep text | wc -l 
+
+
+sed - для редоктирование строчек 
+awk - для работы с таблицами 
+//выведет 8 колонку 
+ps gaxuww | greep text | awk '{print $8}' 
+//uniq -c    сколько значение встречается 
+ps gaxuww | greep text | awk '{print $8}' | sort |  uniq -c
+
+myProgram <file.in
+myProgram >file.out 2>file.error
+
+wc -l 
+
+ls -l 
+echo $?     //заносится результат программы которая только что завершилась 
+ls text.txt && echo success   // && если левая команда выполнилась то и правая выполнится 
+||  - означает правая выполнится если левая не выполнелась 
+
+make  
+
+//sed заменет в каждой строке цифры 
+cat file.txt | sed 's/[^0-9]//g'
+
+//????? говорят что круто исходники смотреть 
+perl 
+
+apt-get update 
+apt-get install npm 
+
+/////////////////////////////////////////// 
+архитектура 15 
+15 html 
